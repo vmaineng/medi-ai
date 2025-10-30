@@ -1,5 +1,6 @@
 import { Stethoscope, Heart, Menu } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function Navbar() {
   return (
@@ -17,6 +18,28 @@ export function Navbar() {
               <Heart className="w-6 h-6 text-pink-400 fill-pink400" />
             </div>
           </div>
+        </div>
+        <div className="hidden md:flex items-center gap-6">
+          <Link
+            href="/dashboard"
+            className=" text-gray-600 hover:text-pink-500 transition-colors"
+          >
+            Dashboard
+          </Link>
+          <Link
+            href="/history"
+            className=" text-gray-600 hover:text-pink-500 transition-colors"
+          >
+            History
+          </Link>
+          <Button className="bg-linear-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white">
+            Get Started
+          </Button>
+        </div>
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon">
+            <Menu className="h-6 w-6 text-gray-600" />
+          </Button>
         </div>
       </div>
     </nav>
