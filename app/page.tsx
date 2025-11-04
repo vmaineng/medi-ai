@@ -3,10 +3,19 @@
 import { useState } from "react";
 import { Navbar } from "./src/components/Navbar";
 import { SuggestionsList } from "./src/components/SuggestionsList";
+import { NotesInput } from "./src/components/NotesInput";
+import { Suggestion } from "./src/types/suggestion";
 
 export default function Home() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+
+  const handleSubmit = async (notes: string) => {
+    setIsLoading(true);
+    setHasSubmitted(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-pink-50 to-blue-50 flex flex-col">
@@ -22,6 +31,9 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div>
+            <NotesInput onSubmit={handleSubmit} isLoading={isLoading} />
+          </div>
           <div>
             <SuggestionsList
               suggestions={suggestions}
