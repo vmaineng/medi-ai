@@ -5,6 +5,7 @@ import { Navbar } from "./src/components/Navbar";
 import { SuggestionsList } from "./src/components/SuggestionsList";
 import { NotesInput } from "./src/components/NotesInput";
 import { Suggestion } from "./src/types/suggestion";
+import { Footer } from "./src/components/Footer";
 
 export default function Home() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -42,6 +43,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
