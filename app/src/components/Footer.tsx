@@ -40,7 +40,8 @@ export function Footer() {
           </div>
           <div className="border-t border-pink-100 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
             <p className="text-sm text-gray-500">
-              © 2025 MediCare AI. Made with{" "}
+              &copy;{new Date().getFullYear()} Medi-AI. All rights reserved.
+              Made with{" "}
               <Heart className="inline h-3 w-3 text-pink-400 fill-pink-400" />{" "}
               for healthcare professionals.
             </p>

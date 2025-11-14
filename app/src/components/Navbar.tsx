@@ -46,7 +46,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden bg-blue-100 p-1 rounded">
+          <div className="md:hidden rounded">
             <Button
               variant="ghost"
               size="icon"
