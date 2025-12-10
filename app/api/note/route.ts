@@ -16,7 +16,26 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const prompt = `As a doctor professional, please simplify the doctors note into a diagnosis, steps they can take to prevent :\n\n${docText}`;
+    const prompt = `
+    You are a medical information assistant. Your job is to read the doctor's note and produce a clear, simple explanation for the patient.
+
+Rules:
+- Do NOT give medical advice.
+- Do NOT create a diagnosis.
+- Summarize what the doctor already stated in plain language.
+- Highlight key concerns mentioned by the doctor.
+- Provide general wellness steps that are safe for anyone (like hydration, rest, monitoring symptoms).
+- If the note implies urgent issues, say: “Please contact your healthcare provider for clarification.”
+
+Output in this format:
+1. Summary of what the doctor said
+2. What the doctor is monitoring or concerned about
+3. Safe general steps
+4. Questions the patient can ask their doctor for clarity
+
+Doctor’s note:
+${docText}
+`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
