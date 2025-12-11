@@ -9,9 +9,11 @@ import {
 } from "../ui/card";
 import { Loader2, Sparkles } from "lucide-react";
 import { NotesInputProps } from "../types/noteinput";
-import { Teachers } from "next/font/google";
+import { useState } from "react";
 
 export function NotesInput({ onSubmit, isLoading }: NotesInputProps) {
+  const [notes, setNotes] = useState<string>("");
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -38,6 +40,8 @@ export function NotesInput({ onSubmit, isLoading }: NotesInputProps) {
         <form onSubmit={handleSubmit} className="space-y-4">
           <Textarea
             name="notes"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
             placeholder="e.g., Patient shows improved vitals. Blood pressure stable at 120/80. Continue current medication regimen. Monitor glucose levels daily..."
             className="min-h-[200px] border-pink-100 focus:border-pink-300 focus:ring-pink-200"
             disabled={isLoading}
@@ -58,6 +62,12 @@ export function NotesInput({ onSubmit, isLoading }: NotesInputProps) {
                 Generate Suggestions
               </>
             )}
+          </Button>
+          <Button
+            onClick={() => setNotes("")}
+            className="w-full py-3 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors border border-white rounded-lg"
+          >
+            Clear Job Description
           </Button>
         </form>
       </CardContent>
